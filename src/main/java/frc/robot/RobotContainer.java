@@ -32,13 +32,13 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    driveA.whileHeld(new MakeSomeNoise(noiseMakers));
-    driveB.whenPressed(new InstantCommand(() -> driveTrain.toggleSlowMode()));
+    driveA.whileTrue(new MakeSomeNoise(noiseMakers));
+    driveB.onTrue(new InstantCommand(() -> driveTrain.toggleSlowMode()));
 
-    driveX.whileHeld(new IndexShirts(shooter));
-    driveY.whenPressed(new Shoot(shooter));
-    driveLeftBumper.whileHeld(new Actuate(shooter, false, drivePad));
-    driveRightBumper.whileHeld(new Actuate(shooter, true, drivePad));
+    driveX.whileTrue(new IndexShirts(shooter));
+    driveY.onTrue(new Shoot(shooter));
+    driveLeftBumper.whileTrue(new Actuate(shooter, false, drivePad));
+    driveRightBumper.whileTrue(new Actuate(shooter, true, drivePad));
 
   }
 
