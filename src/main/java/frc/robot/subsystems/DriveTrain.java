@@ -4,26 +4,28 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.utils.Constants;
 
 public class DriveTrain extends SubsystemBase {
   // declare our variables
-  private Spark frontL;
-  private Spark frontR;
-  private Spark backL;
-  private Spark backR;
+  private TalonSRX frontL;
+  private TalonSRX frontR;
+  private TalonSRX backL;
+  private TalonSRX backR;
 
   private boolean slowModeOn = true;
 
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
-    frontL = new Spark(Constants.ID.DRIVETRAIN_FRONT_LEFT);
-    frontR = new Spark(Constants.ID.DRIVETRAIN_FRONT_RIGHT);
-    backL = new Spark(Constants.ID.DRIVETRAIN_BACK_LEFT);
-    backR = new Spark(Constants.ID.DRIVETRAIN_BACK_RIGHT);
+    frontL = new TalonSRX(Constants.ID.DRIVETRAIN_FRONT_LEFT);
+    frontR = new TalonSRX(Constants.ID.DRIVETRAIN_FRONT_RIGHT);
+    backL = new TalonSRX(Constants.ID.DRIVETRAIN_BACK_LEFT);
+    backR = new TalonSRX(Constants.ID.DRIVETRAIN_BACK_RIGHT);
 
     //Either make the sparks follow each other or code them both
     //CAN IDs will likely be off
@@ -50,18 +52,18 @@ public class DriveTrain extends SubsystemBase {
   
 
   public void tankDrive(double leftSpeed, double rightSpeed) {
-    frontL.set(leftSpeed);
-    frontR.set(rightSpeed);
+    frontL.set(ControlMode.PercentOutput, leftSpeed);
+    frontR.set(ControlMode.PercentOutput, rightSpeed);
   }
 
   public void arcadeDrive(double x, double y) {
-    frontL.set(y - x);
-    frontR.set(y + x);
+    frontL.set(ControlMode.PercentOutput, y - x);
+    frontR.set(ControlMode.PercentOutput, y + x);
   }
 
   public void stop() {
-    frontL.set(0.0);
-    frontR.set(0.0);
+    frontL.set(ControlMode.PercentOutput, 0.0);
+    frontR.set(ControlMode.PercentOutput, 0.0);
   }
 
   public void toggleSlowMode() {
