@@ -5,35 +5,46 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.utils.Constants;
 
 public class DriveTrain extends SubsystemBase {
   // declare our variables
-  private TalonSRX frontL;
+  private VictorSPX frontL;
   private TalonSRX frontR;
   private TalonSRX backL;
-  private TalonSRX backR;
+  private VictorSPX backR;
 
   private boolean slowModeOn = true;
 
 
   /** Creates a new DriveTrain. */
   public DriveTrain() {
-    frontL = new TalonSRX(Constants.ID.DRIVETRAIN_FRONT_LEFT);
+    frontL = new VictorSPX(Constants.ID.DRIVETRAIN_FRONT_LEFT);
     frontR = new TalonSRX(Constants.ID.DRIVETRAIN_FRONT_RIGHT);
     backL = new TalonSRX(Constants.ID.DRIVETRAIN_BACK_LEFT);
-    backR = new TalonSRX(Constants.ID.DRIVETRAIN_BACK_RIGHT);
+    backR = new VictorSPX(Constants.ID.DRIVETRAIN_BACK_RIGHT);
 
     //Either make the sparks follow each other or code them both
     //CAN IDs will likely be off
 
+    frontL.setNeutralMode(NeutralMode.Brake);
+    frontR.setNeutralMode(NeutralMode.Brake);
+    backL.setNeutralMode(NeutralMode.Brake);
+    backR.setNeutralMode(NeutralMode.Brake);
+    
     frontL.setInverted(true);
     backL.setInverted(true);
     frontR.setInverted(false);
     backR.setInverted(false);
+
+    backL.follow(frontL);
+    backR.follow(frontR);
 
     // No neutral mode for sparks
     // frontL.setNeutralMode(NeutralMode.Brake);;
@@ -52,17 +63,17 @@ public class DriveTrain extends SubsystemBase {
   
 
   public void tankDrive(double leftSpeed, double rightSpeed) {
-    frontL.set(ControlMode.PercentOutput, leftSpeed);
+    frontL.set(VictorSPXControlMode.PercentOutput, leftSpeed);
     frontR.set(ControlMode.PercentOutput, rightSpeed);
   }
 
   public void arcadeDrive(double x, double y) {
-    frontL.set(ControlMode.PercentOutput, y - x);
+    frontL.set(VictorSPXControlMode.PercentOutput, y - x);
     frontR.set(ControlMode.PercentOutput, y + x);
   }
 
   public void stop() {
-    frontL.set(ControlMode.PercentOutput, 0.0);
+    frontL.set(VictorSPXControlMode.PercentOutput, 0.0);
     frontR.set(ControlMode.PercentOutput, 0.0);
   }
 
