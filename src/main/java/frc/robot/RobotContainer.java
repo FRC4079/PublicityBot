@@ -36,7 +36,7 @@ public class RobotContainer {
     driveB.onTrue(new InstantCommand(() -> driveTrain.toggleSlowMode()));
 
     driveX.whileTrue(new IndexShirts(shooter));
-    driveY.onTrue(new Shoot(shooter));
+    driveY.whileTrue(new Shoot(shooter));
     driveLeftBumper.whileTrue(new Actuate(shooter, false, drivePad));
     driveRightBumper.whileTrue(new Actuate(shooter, true, drivePad));
 

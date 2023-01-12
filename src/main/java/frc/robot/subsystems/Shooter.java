@@ -29,7 +29,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public void shoot() {
-    shooterSpark.set(1.0);
+    shooterSpark.set(0.3);
   }
 
   public void stopShooting() {
