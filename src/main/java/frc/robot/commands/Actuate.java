@@ -39,6 +39,7 @@ public class Actuate extends CommandBase {
     // else {
     // shooter.stopArticulating();
     // }
+    System.out.println("is in actuate");
   }
 
   // Called once the command ends or is interrupted.

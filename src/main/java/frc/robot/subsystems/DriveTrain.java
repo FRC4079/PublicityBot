@@ -10,6 +10,7 @@ import com.ctre.phoenix.motorcontrol.VictorSPXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.utils.Constants;
 
@@ -68,6 +69,8 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void arcadeDrive(double x, double y) {
+    SmartDashboard.putNumber("L", y - x);
+    SmartDashboard.putNumber("R", y + x);
     frontL.set(VictorSPXControlMode.PercentOutput, y - x);
     frontR.set(ControlMode.PercentOutput, y + x);
   }
