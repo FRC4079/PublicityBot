@@ -31,6 +31,7 @@ public class Shoot extends CommandBase {
   @Override
   public void execute() {
     shooter.shoot();
+    System.out.println("Is in shoot");
   }
 
   // Called once the command ends or is interrupted.
@@ -42,6 +43,7 @@ public class Shoot extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return timer.get() > 0.15;
+    //return false;
+    return timer.get() > .15;
   }
 }

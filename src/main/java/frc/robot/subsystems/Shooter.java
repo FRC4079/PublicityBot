@@ -18,18 +18,18 @@ public class Shooter extends SubsystemBase {
   private Spark indexer;
 
   public Shooter() {
-    shooterSpark = new Spark(0);
+    shooterSpark = new Spark(1);
     articulator = new TalonSRX(4);
-    indexer = new Spark(1);
+    indexer = new Spark(0);//1
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-
+//0.8 minimum
   public void shoot() {
-    shooterSpark.set(1.0);
+    shooterSpark.set(.85);
   }
 
   public void stopShooting() {

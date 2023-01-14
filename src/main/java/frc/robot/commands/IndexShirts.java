@@ -16,10 +16,12 @@ public class IndexShirts extends CommandBase {
   @Override
   public void initialize() {
     shooter.index();
+    System.out.println("is in index shirts");
   }
 
   @Override
   public void execute() {
+    System.out.println("is in index kjhyhfiofuyfuyshirts");
   }
 
   @Override
