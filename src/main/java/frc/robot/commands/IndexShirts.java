@@ -21,6 +21,7 @@ public class IndexShirts extends CommandBase {
 
   @Override
   public void execute() {
+    System.out.println("is in index kjhyhfiofuyfuyshirts");
   }
 
   @Override

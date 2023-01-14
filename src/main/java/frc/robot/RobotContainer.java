@@ -27,13 +27,17 @@ public class RobotContainer {
   private JoystickButton driveStart = new JoystickButton(drivePad, 8);
 
   public RobotContainer() {
+    
     driveTrain.setDefaultCommand(new ArcadeDrive(driveTrain, drivePad));
+    //driveTrain.setDefaultCommand(new ArcadeDrive(1, drivePad))
     configureButtonBindings();
   }
+
 
   private void configureButtonBindings() {
     driveA.whileTrue(new MakeSomeNoise(noiseMakers));
     driveB.onTrue(new InstantCommand(() -> driveTrain.toggleSlowMode()));
+
 
     driveX.whileTrue(new IndexShirts(shooter));
     driveY.whileTrue(new Shoot(shooter));
