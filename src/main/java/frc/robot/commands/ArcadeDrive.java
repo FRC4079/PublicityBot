@@ -29,15 +29,12 @@ public class ArcadeDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (drivePad.getRightAnalogY() > 0.2){
-      driveTrain.driveOne();
+    if (driveTrain.getSlowMode()) {
+      driveTrain.arcadeDrive(drivePad.getRightAnalogX() * Constants.DriveTrain.SLOW_MODE,
+          drivePad.getLeftAnalogY() * Constants.DriveTrain.SLOW_MODE);
+    } else {
+      driveTrain.arcadeDrive(drivePad.getRightAnalogX(), drivePad.getLeftAnalogY());
     }
-    // if (driveTrain.getSlowMode()) {
-    //   driveTrain.arcadeDrive(drivePad.getRightAnalogX() * Constants.DriveTrain.SLOW_MODE,
-    //       drivePad.getLeftAnalogY() * Constants.DriveTrain.SLOW_MODE);
-    // } else {
-    //   driveTrain.arcadeDrive(drivePad.getRightAnalogX(), drivePad.getLeftAnalogY());
-    // }
   }
 
   // Called once the command ends or is interrupted.
