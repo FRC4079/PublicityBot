@@ -72,7 +72,9 @@ public class DriveTrain extends SubsystemBase {
     SmartDashboard.putNumber("L", y - x);
     SmartDashboard.putNumber("R", y + x);
     frontL.set(VictorSPXControlMode.PercentOutput, y - x);
+    backL.set(ControlMode.PercentOutput, y - x);
     frontR.set(ControlMode.PercentOutput, y + x);
+    backR.set(VictorSPXControlMode.PercentOutput, y + x);
   }
 
   public void stop() {
