@@ -10,7 +10,8 @@ public final class Constants {
     }
 
     public final static class DriveTrain {
-        public static final double SLOW_MODE = 0.45;
+        public static final double LEFT_SLOW_MODE = 0.45;
+        public static final double RIGHT_SLOW_MODE = 0.65;
 
     }
 }
