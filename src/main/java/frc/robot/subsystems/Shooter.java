@@ -23,7 +23,7 @@ public class Shooter extends SubsystemBase {
     indexer = new Spark(0);//1
   }
 
-  @Override
+  @Override                                                                                                                                                                                                                                                                                                                                                                                                               
   public void periodic() {
     // This method will be called once per scheduler run
   }

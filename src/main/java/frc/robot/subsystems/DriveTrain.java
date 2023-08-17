@@ -33,6 +33,10 @@ public class DriveTrain extends SubsystemBase {
 
     //Either make the sparks follow each other or code them both
     //CAN IDs will likely be off
+    frontL.configFactoryDefault();
+    frontR.configFactoryDefault();
+    backL.configFactoryDefault();
+    backR.configFactoryDefault();
 
     frontL.setNeutralMode(NeutralMode.Brake);
     frontR.setNeutralMode(NeutralMode.Brake);
@@ -48,12 +52,19 @@ public class DriveTrain extends SubsystemBase {
     backR.follow(frontR);
 
     // No neutral mode for sparks
-    // frontL.setNeutralMode(NeutralMode.Brake);;
-    // frontR.setNeutralMode(NeutralMode.Brake);
-    // backL.setNeutralMode(NeutralMode.Brake);
-    // backR.setNeutralMode(NeutralMode.Brake);
+    frontL.setNeutralMode(NeutralMode.Brake);;
+    frontR.setNeutralMode(NeutralMode.Brake);
+    backL.setNeutralMode(NeutralMode.Brake);
+    backR.setNeutralMode(NeutralMode.Brake);
 
+    
 
+    frontL.configPeakOutputForward(0.5);
+    frontR.configPeakOutputForward(0.5);
+    backL.configPeakOutputForward(0.5);
+    backR.configPeakOutputForward(0.5);
+
+    
   }
 
   @Override
