@@ -30,8 +30,8 @@ public class ArcadeDrive extends CommandBase {
   @Override
   public void execute() {
     if (driveTrain.getSlowMode()) {
-      driveTrain.arcadeDrive(drivePad.getRightAnalogX() * Constants.DriveTrain.SLOW_MODE,
-          drivePad.getLeftAnalogY() * Constants.DriveTrain.SLOW_MODE);
+      driveTrain.arcadeDrive(drivePad.getRightAnalogX() * Constants.DriveTrain.RIGHT_SLOW_MODE,
+          drivePad.getLeftAnalogY() * Constants.DriveTrain.LEFT_SLOW_MODE);
     } else {
       driveTrain.arcadeDrive(drivePad.getRightAnalogX(), drivePad.getLeftAnalogY());
     }
