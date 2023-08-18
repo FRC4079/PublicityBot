@@ -59,10 +59,10 @@ public class DriveTrain extends SubsystemBase {
 
     
 
-    frontL.configPeakOutputForward(0.5);
-    frontR.configPeakOutputForward(0.5);
-    backL.configPeakOutputForward(0.5);
-    backR.configPeakOutputForward(0.5);
+    // frontL.configPeakOutputForward(0.5);
+    // frontR.configPeakOutputForward(0.5);
+    // backL.configPeakOutputForward(0.5);
+    // backR.configPeakOutputForward(0.5);
 
     
   }
